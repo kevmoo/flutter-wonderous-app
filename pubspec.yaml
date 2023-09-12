@@ -58,6 +58,18 @@ dev_dependencies:
   flutter_native_splash: ^2.3.3
   dependency_validator: ^3.2.2
 
+dependency_overrides:
+  shared_preferences_web:
+    git:
+      url: https://github.com/flutter/packages
+      ref: pkg_web_wip
+      path: packages/shared_preferences/shared_preferences_web
+  url_launcher_web:
+    git:
+      url: https://github.com/flutter/packages
+      ref: pkg_web_wip
+      path: packages/url_launcher/url_launcher_web
+
 icons_launcher:
   image_path: "assets/marketing/app-icon-1024.png"
   platforms:
