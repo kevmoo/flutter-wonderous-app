@@ -9,8 +9,7 @@ import 'package:wonders/ui/common/utils/context_utils.dart';
 // Uses a random seed system, to make sure we get the same set of clouds for each wonder, without actually having to hand-position them.
 class AnimatedClouds extends StatefulWidget with GetItStatefulWidgetMixin {
   AnimatedClouds(
-      {Key? key, this.enableAnimations = true, required this.wonderType, required this.opacity, this.cloudSize = 500})
-      : super(key: key);
+      {super.key, this.enableAnimations = true, required this.wonderType, required this.opacity, this.cloudSize = 500});
   final WonderType wonderType;
   final bool enableAnimations;
   final double opacity;

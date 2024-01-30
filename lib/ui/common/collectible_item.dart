@@ -6,7 +6,7 @@ import 'package:wonders/ui/common/utils/app_haptics.dart';
 import 'package:wonders/ui/screens/collectible_found/collectible_found_screen.dart';
 
 class CollectibleItem extends StatelessWidget with GetItMixin {
-  CollectibleItem(this.collectible, {this.size = 64.0, Key? key, this.focus}) : super(key: key) {
+  CollectibleItem(this.collectible, {this.size = 64.0, super.key, this.focus}) {
     // pre-fetch the image, so it's ready if we show the collectible found screen.
     _imageProvider = NetworkImage(collectible.imageUrl);
     _imageProvider.resolve(ImageConfiguration()).addListener(ImageStreamListener((_, __) {}));
@@ -56,9 +56,9 @@ class CollectibleItem extends StatelessWidget with GetItMixin {
                 .animate(onPlay: (controller) => controller.repeat())
                 .shimmer(delay: 4000.ms, duration: $styles.times.med * 3)
                 .shake(curve: Curves.easeInOutCubic, hz: 4)
-                .scale(begin: 1.0, end: 1.1, duration: $styles.times.med)
+                .scaleXY(begin: 1.0, end: 1.1, duration: $styles.times.med)
                 .then(delay: $styles.times.med)
-                .scale(begin: 1.0, end: 1 / 1.1),
+                .scaleXY(begin: 1.0, end: 1 / 1.1),
           ),
         ),
       ),

@@ -1,8 +1,7 @@
 part of '../editorial_screen.dart';
 
 class _ScrollingContent extends StatelessWidget {
-  const _ScrollingContent(this.data, {Key? key, required this.scrollPos, required this.sectionNotifier})
-      : super(key: key);
+  const _ScrollingContent(this.data, {super.key, required this.scrollPos, required this.sectionNotifier});
   final WonderData data;
   final ValueNotifier<double> scrollPos;
   final ValueNotifier<int> sectionNotifier;
@@ -166,7 +165,7 @@ class _ScrollingContent extends StatelessWidget {
 }
 
 class _YouTubeThumbnail extends StatelessWidget {
-  const _YouTubeThumbnail({Key? key, required this.id, required this.caption}) : super(key: key);
+  const _YouTubeThumbnail({super.key, required this.id, required this.caption});
   final String id;
   final String caption;
 
@@ -217,7 +216,7 @@ class _YouTubeThumbnail extends StatelessWidget {
 }
 
 class _MapsThumbnail extends StatefulWidget {
-  const _MapsThumbnail(this.data, {Key? key}) : super(key: key);
+  const _MapsThumbnail(this.data, {super.key});
   final WonderData data;
 
   @override
@@ -279,10 +278,10 @@ class _MapsThumbnailState extends State<_MapsThumbnail> {
 
 class SliverBackgroundColor extends SingleChildRenderObjectWidget {
   const SliverBackgroundColor({
-    Key? key,
+    super.key,
     required this.color,
     Widget? sliver,
-  }) : super(key: key, child: sliver);
+  }) : super(child: sliver);
 
   final Color color;
 

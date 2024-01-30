@@ -14,8 +14,7 @@ import 'package:wonders/ui/common/utils/app_haptics.dart';
 part 'widgets/_animated_cutout_overlay.dart';
 
 class PhotoGallery extends StatefulWidget {
-  const PhotoGallery({Key? key, this.imageSize, required this.collectionId, required this.wonderType})
-      : super(key: key);
+  const PhotoGallery({super.key, this.imageSize, required this.collectionId, required this.wonderType});
   final Size? imageSize;
   final String collectionId;
   final WonderType wonderType;

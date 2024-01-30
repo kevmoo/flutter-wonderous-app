@@ -6,7 +6,7 @@ import 'package:wonders/ui/common/controls/app_loading_indicator.dart';
 
 class AppImage extends StatefulWidget {
   const AppImage({
-    Key? key,
+    super.key,
     required this.image,
     this.fit = BoxFit.scaleDown,
     this.alignment = Alignment.center,
@@ -16,7 +16,7 @@ class AppImage extends StatefulWidget {
     this.progress = false,
     this.color,
     this.scale,
-  }) : super(key: key);
+  });
 
   final ImageProvider? image;
   final BoxFit fit;

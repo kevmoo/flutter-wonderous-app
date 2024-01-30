@@ -11,7 +11,7 @@ import 'package:wonders/ui/wonder_illustrations/taj_mahal_illustration.dart';
 
 /// Convenience class for showing an illustration when all you have is the type.
 class WonderIllustration extends StatelessWidget {
-  const WonderIllustration(this.type, {Key? key, required this.config}) : super(key: key);
+  const WonderIllustration(this.type, {super.key, required this.config});
   final WonderIllustrationConfig config;
   final WonderType type;
 

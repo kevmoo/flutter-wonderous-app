@@ -12,7 +12,7 @@ part 'widgets/_celebration_particles.dart';
 class CollectibleFoundScreen extends StatelessWidget {
   // CollectibleItem passes in a (theoretically) pre-loaded imageProvider.
   // we could check for load completion, and hold after introT, but that shouldn't be necessary in a real-world scenario.
-  const CollectibleFoundScreen({required this.collectible, required this.imageProvider, Key? key}) : super(key: key);
+  const CollectibleFoundScreen({required this.collectible, required this.imageProvider, super.key});
 
   final CollectibleData collectible;
   final ImageProvider imageProvider;
@@ -44,7 +44,7 @@ class CollectibleFoundScreen extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-        ).animate().scale(begin: 1.5, end: 3, curve: Curves.easeInExpo, delay: t, duration: t * 3).fadeOut(),
+        ).animate().scaleXY(begin: 1.5, end: 3, curve: Curves.easeInExpo, delay: t, duration: t * 3).fadeOut(),
       )
     ]);
   }
@@ -140,14 +140,14 @@ class CollectibleFoundScreen extends StatelessWidget {
             child: child,
           ),
         )
-        .scale(begin: 0.3, duration: t * 2, curve: Curves.easeOutExpo, alignment: Alignment(0, 0.7));
+        .scaleXY(begin: 0.3, duration: t * 2, curve: Curves.easeOutExpo, alignment: Alignment(0, 0.7));
   }
 
   Widget _buildRibbon(BuildContext context) {
     Duration t = $styles.times.fast;
     return _AnimatedRibbon($strings.collectibleFoundTitleArtifactDiscovered.toUpperCase())
         .animate()
-        .scale(begin: 0.3, duration: t * 2, curve: Curves.easeOutExpo, alignment: Alignment(0, -1));
+        .scaleXY(begin: 0.3, duration: t * 2, curve: Curves.easeOutExpo, alignment: Alignment(0, -1));
   }
 
   Widget _buildTitle(BuildContext context, String text, TextStyle style, Color color, Duration delay) {

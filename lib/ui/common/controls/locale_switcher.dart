@@ -1,7 +1,7 @@
 import 'package:wonders/common_libs.dart';
 
 class LocaleSwitcher extends StatelessWidget with GetItMixin {
-  LocaleSwitcher({Key? key}) : super(key: key);
+  LocaleSwitcher({super.key});
 
   @override
   Widget build(BuildContext context) {

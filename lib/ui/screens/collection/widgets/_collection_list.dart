@@ -3,11 +3,11 @@ part of '../collection_screen.dart';
 @immutable
 class _CollectionList extends StatefulWidget with GetItStatefulWidgetMixin {
   _CollectionList({
-    Key? key,
+    super.key,
     this.onReset,
     required this.fromId,
     this.scrollKey,
-  }) : super(key: key);
+  });
 
   static const double _vtCardExtent = 300;
   static const double _hzCardExtent = 600;

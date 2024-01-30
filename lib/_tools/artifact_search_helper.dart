@@ -16,7 +16,7 @@ final int maxYear = wondersLogic.timelineEndYear;
 const int maxRequests = 32;
 
 class ArtifactSearchHelper extends StatefulWidget {
-  const ArtifactSearchHelper({Key? key}) : super(key: key);
+  const ArtifactSearchHelper({super.key});
 
   @override
   State<ArtifactSearchHelper> createState() => _ArtifactSearchHelperState();

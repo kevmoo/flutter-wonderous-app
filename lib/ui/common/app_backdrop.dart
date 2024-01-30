@@ -5,10 +5,10 @@ import 'package:wonders/common_libs.dart';
 
 class AppBackdrop extends StatelessWidget {
   const AppBackdrop({
-    Key? key,
+    super.key,
     this.strength = 1,
     this.child,
-  }) : super(key: key);
+  });
 
   final double strength;
   final Widget? child;
