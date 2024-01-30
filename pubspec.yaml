@@ -42,7 +42,7 @@ dependencies:
   package_info_plus: ^5.0.0
   particle_field: ^1.0.0
   path_provider: ^2.1.1
-  pointer_interceptor: ^0.9.3+6
+  pointer_interceptor: ^0.10.1
   provider: ^6.0.5
   rnd: ^0.2.0
   shared_preferences: ^2.0.17
@@ -51,7 +51,7 @@ dependencies:
   unsplash_client: ^2.1.0+3
   url_launcher: ^6.1.14
   webview_flutter: ^4.0.2
-  youtube_player_iframe: ^4.0.4
+  youtube_player_iframe: ^5.0.0
 
 dev_dependencies:
   icons_launcher: ^2.1.3
