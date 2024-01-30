@@ -49,9 +49,6 @@ class AppLogic {
       WidgetsFlutterBinding.ensureInitialized().ensureSemantics();
     }
 
-    // Load any bitmaps the views might need
-    await AppBitmaps.init();
-
     // Set preferred refresh rate to the max possible (the OS may ignore this)
     if (!kIsWeb && PlatformInfo.isAndroid) {
       await FlutterDisplayMode.setHighRefreshRate();
