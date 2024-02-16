@@ -1,3 +1,4 @@
+import 'package:wonders/automator.dart';
 import 'package:wonders/common_libs.dart';
 import 'package:wonders/ui/common/lazy_indexed_stack.dart';
 import 'package:wonders/ui/common/measurable_widget.dart';
@@ -27,6 +28,24 @@ class _WonderDetailsScreenState extends State<WonderDetailsScreen>
 
   double? _tabBarSize;
   bool _useNavRail = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Automator.instance
+      ..registerAction(
+        AutomationAction.switchDetailsTabToPhotos,
+        () => _handleTabTapped(1),
+      )
+      ..registerAction(
+        AutomationAction.switchDetailsTabToArtifacts,
+        () => _handleTabTapped(2),
+      )
+      ..registerAction(
+        AutomationAction.switchDetailsTabToTimeline,
+        () => _handleTabTapped(3),
+      );
+  }
 
   @override
   void didUpdateWidget(covariant WonderDetailsScreen oldWidget) {
