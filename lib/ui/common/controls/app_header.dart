@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:wonders/automator.dart';
 import 'package:wonders/common_libs.dart';
 import 'package:wonders/ui/common/app_icons.dart';
 
@@ -60,19 +64,35 @@ class AppHeader extends StatelessWidget {
               ),
               Positioned.fill(
                 child: Center(
-                  child: Row(children: [
-                    Gap($styles.insets.sm),
-                    if (showBackBtn)
-                      BackBtn(
-                        onPressed: onBack,
-                        icon: backIcon,
-                        semanticLabel: backBtnSemantics,
+                  child: Row(
+                    children: [
+                      Gap($styles.insets.sm),
+                      if (showBackBtn)
+                        BackBtn(
+                          onPressed: onBack,
+                          icon: backIcon,
+                          semanticLabel: backBtnSemantics,
+                        ),
+                      const SizedBox(width: 16.0),
+                      ValueListenableBuilder<bool>(
+                        valueListenable: Automator.instance.automating,
+                        builder: (context, automating, _) => IconButton.filled(
+                          onPressed: () {
+                            if (automating) {
+                              Automator.instance.stopAutomation();
+                            } else {
+                              unawaited(Automator.instance.beginAutomation());
+                            }
+                          },
+                          icon: Icon(automating ? Icons.stop : Icons.play_arrow),
+                        ),
                       ),
-                    Spacer(),
-                    if (trailing != null) trailing!.call(context),
-                    Gap($styles.insets.sm),
-                    //if (showBackBtn) Container(width: $styles.insets.lg * 2, alignment: Alignment.centerLeft, child: child),
-                  ]),
+                      Spacer(),
+                      if (trailing != null) trailing!.call(context),
+                      Gap($styles.insets.sm),
+                      //if (showBackBtn) Container(width: $styles.insets.lg * 2, alignment: Alignment.centerLeft, child: child),
+                    ],
+                  ),
                 ),
               ),
             ],

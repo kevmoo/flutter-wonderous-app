@@ -1,3 +1,4 @@
+import 'package:wonders/automator.dart';
 import 'package:wonders/common_libs.dart';
 import 'package:wonders/logic/data/wonder_data.dart';
 import 'package:wonders/ui/common/app_icons.dart';
@@ -60,6 +61,16 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     final initialPage = _numWonders * 100 + _wonderIndex;
     // Create page controller,
     _pageController = PageController(viewportFraction: 1, initialPage: initialPage);
+
+    Automator.instance
+      ..registerAction(AutomationAction.homeScreenNext, () {
+        _handlePrevNext(1);
+      })
+      ..registerAction(AutomationAction.homeScreenReset, () {
+        _setPageIndex(0);
+      })..registerAction(AutomationAction.homeScreenShowDetailsPage, () { 
+        _showDetailsPage();
+      });
   }
 
   void _handlePageChanged(value) {

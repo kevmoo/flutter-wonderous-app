@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_circular_text/circular_text.dart';
+import 'package:wonders/automator.dart';
 import 'package:wonders/common_libs.dart';
 import 'package:wonders/logic/common/string_utils.dart';
 import 'package:wonders/logic/data/wonder_data.dart';
@@ -48,6 +49,22 @@ class _WonderEditorialScreenState extends State<WonderEditorialScreen> {
   late final ScrollController _scroller = ScrollController()..addListener(_handleScrollChanged);
   final _scrollPos = ValueNotifier(0.0);
   final _sectionIndex = ValueNotifier(0);
+
+  @override
+  void initState() {
+    super.initState();
+
+    Automator.instance.registerAction(
+      AutomationAction.editorialScrollToBottom,
+      () {
+        _scroller.animateTo(
+          _scroller.position.maxScrollExtent,
+          duration: const Duration(seconds: 2),
+          curve: Curves.linear,
+        );
+      },
+    );
+  }
 
   @override
   void dispose() {
