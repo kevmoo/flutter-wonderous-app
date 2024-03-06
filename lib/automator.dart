@@ -14,56 +14,50 @@ class Automator {
   final _automating = ValueNotifier(false);
 
   Future<void> beginAutomation() async {
+    if (_automating.value) {
+      // short-circuit
+      return;
+    }
     _automating.value = true;
 
     appRouter.go(ScreenPaths.home);
-    callAction(AutomationAction.homeScreenReset);
 
-    for (int i = 0; i < 4; i++) {
-      await Future.delayed(
-        _shortDelay,
-        () => callAction(AutomationAction.homeScreenNext),
-      );
+    for (var action in [
+      AutomationAction.homeScreenReset,
+      AutomationAction.homeScreenNext,
+      AutomationAction.homeScreenNext,
+      AutomationAction.homeScreenNext,
+      AutomationAction.homeScreenNext,
+      AutomationAction.homeScreenShowDetailsPage,
+      AutomationAction.editorialScrollToBottom,
+      AutomationAction.switchDetailsTabToPhotos,
+      AutomationAction.switchDetailsTabToArtifacts,
+      AutomationAction.switchDetailsTabToTimeline,
+    ]) {
+      await Future.delayed(action.delay, () => _callAction(action));
+      if (!_automating.value) {
+        return;
+      }
     }
 
-    // Open the details for the current Wonder.
-    await Future.delayed(
-      _moderateDelay,
-      () => callAction(AutomationAction.homeScreenShowDetailsPage),
-    );
+    await Future.delayed(_shortDelay);
 
-    // Scroll to the bottom of the editorial.
-    await Future.delayed(
-      _moderateDelay,
-      () => callAction(AutomationAction.editorialScrollToBottom),
-    );
-    await Future.delayed(
-      _moderateDelay,
-      () => callAction(AutomationAction.switchDetailsTabToPhotos),
-    );
-    await Future.delayed(
-      _moderateDelay,
-      () => callAction(AutomationAction.switchDetailsTabToArtifacts),
-    );
-    await Future.delayed(
-      _moderateDelay,
-      () => callAction(AutomationAction.switchDetailsTabToTimeline),
-    );
-
-    _automating.value = false;
+    stopAutomation();
   }
 
   void stopAutomation() {
-    _automating.value = false;
+    if (_automating.value) {
+      _automating.value = false;
+    }
   }
 
-  final actions = <AutomationAction, VoidCallback>{};
+  final _actions = <AutomationAction, VoidCallback>{};
   void registerAction(AutomationAction action, VoidCallback callback) {
-    actions[action] = callback;
+    _actions[action] = callback;
   }
 
-  void callAction(AutomationAction action) {
-    final callback = actions[action];
+  void _callAction(AutomationAction action) {
+    final callback = _actions[action];
     callback?.call();
   }
 }
@@ -75,9 +69,13 @@ enum AutomationAction {
   editorialScrollToBottom,
   switchDetailsTabToPhotos,
   switchDetailsTabToArtifacts,
-  switchDetailsTabToTimeline,
+  switchDetailsTabToTimeline;
+
+  Duration get delay => switch (this) {
+        AutomationAction.homeScreenNext => _shortDelay,
+        _ => _moderateDelay,
+      };
 }
 
 const _shortDelay = Duration(milliseconds: 1500);
 const _moderateDelay = Duration(seconds: 2);
-const _longDelay = Duration(seconds: 4);
