@@ -95,7 +95,6 @@ class _ExpandingTimeRangeSelectorState extends State<ExpandingTimeRangeSelector>
 
 class _ClosedTimeRange extends StatelessWidget {
   const _ClosedTimeRange({
-    super.key,
     required this.startYear,
     required this.endYear,
   });
@@ -120,7 +119,6 @@ class _ClosedTimeRange extends StatelessWidget {
 
 class _OpenedTimeRange extends StatelessWidget {
   const _OpenedTimeRange({
-    super.key,
     required this.onChange,
     required this.startYear,
     required this.endYear,

@@ -188,7 +188,7 @@ class _HomeMenuState extends State<HomeMenu> {
 }
 
 class _MenuTextBtn extends StatelessWidget {
-  const _MenuTextBtn({super.key, required this.label, required this.onPressed, required this.icon});
+  const _MenuTextBtn({required this.label, required this.onPressed, required this.icon});
   final String label;
   final VoidCallback onPressed;
   final AppIcons icon;

@@ -73,14 +73,7 @@ class AppLogic {
     // Flag bootStrap as complete
     isBootstrapComplete = true;
 
-    // Load initial view (replace empty initial view which is covered by a native splash screen)
-    bool showIntro = settingsLogic.hasCompletedOnboarding.value == false;
-    showIntro = false; // Do not show the intro when trying to automate.
-    if (showIntro) {
-      appRouter.go(ScreenPaths.intro);
-    } else {
-      appRouter.go(initialDeeplink ?? ScreenPaths.home);
-    }
+    appRouter.go(initialDeeplink ?? ScreenPaths.home);
   }
 
   Future<T?> showFullscreenDialogRoute<T>(BuildContext context, Widget child, {bool transparent = false}) async {

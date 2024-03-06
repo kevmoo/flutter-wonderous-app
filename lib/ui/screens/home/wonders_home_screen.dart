@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       ..._wonders.map((e) {
         final config = WonderIllustrationConfig.bg(isShowing: _isSelected(e.type));
         return WonderIllustration(e.type, config: config);
-      }).toList(),
+      }),
       // Clouds
       FractionallySizedBox(
         widthFactor: 1,
@@ -260,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               onPlay: _handleFadeAnimInit,
               child: IgnorePointer(child: WonderIllustration(e.type, config: config)));
         });
-      }).toList(),
+      }),
 
       /// Foreground gradient-2, gets darker when swiping up
       BottomCenter(

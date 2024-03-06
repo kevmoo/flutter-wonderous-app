@@ -126,7 +126,7 @@ class _FullscreenUrlImgViewerState extends State<FullscreenUrlImgViewer> {
 }
 
 class _Viewer extends StatefulWidget {
-  const _Viewer(this.url, this.isZoomed, {super.key});
+  const _Viewer(this.url, this.isZoomed);
 
   final String url;
   final ValueNotifier<bool> isZoomed;

@@ -156,7 +156,7 @@ class BackBtn extends StatelessWidget {
 }
 
 class _SafeAreaWithPadding extends StatelessWidget {
-  const _SafeAreaWithPadding({super.key, required this.child});
+  const _SafeAreaWithPadding({required this.child});
 
   final Widget child;
 

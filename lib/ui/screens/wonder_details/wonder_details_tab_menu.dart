@@ -152,7 +152,7 @@ class WonderDetailsTabMenu extends StatelessWidget {
 }
 
 class _WonderHomeBtn extends StatelessWidget {
-  const _WonderHomeBtn({super.key, required this.size, required this.wonderType, required this.borderSize});
+  const _WonderHomeBtn({required this.size, required this.wonderType, required this.borderSize});
 
   final double size;
   final WonderType wonderType;
@@ -184,7 +184,6 @@ class _TabBtn extends StatelessWidget {
   const _TabBtn(
     this.index,
     this.tabController, {
-    super.key,
     required this.iconImg,
     required this.color,
     required this.label,

@@ -96,7 +96,7 @@ class WondersTimelineBuilder extends StatelessWidget {
 }
 
 class _DefaultTrackEntry extends StatelessWidget {
-  const _DefaultTrackEntry({super.key, required this.isSelected});
+  const _DefaultTrackEntry({required this.isSelected});
   final bool isSelected;
 
   @override

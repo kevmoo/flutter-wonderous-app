@@ -257,7 +257,7 @@ class _PageData {
 }
 
 class _Page extends StatelessWidget {
-  const _Page({super.key, required this.data});
+  const _Page({required this.data});
 
   final _PageData data;
 
@@ -314,7 +314,7 @@ class _WonderousLogo extends StatelessWidget {
 }
 
 class _PageImage extends StatelessWidget {
-  const _PageImage({super.key, required this.data});
+  const _PageImage({required this.data});
 
   final _PageData data;
 

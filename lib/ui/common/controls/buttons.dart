@@ -182,7 +182,7 @@ class AppBtn extends StatelessWidget {
 /// Add a transparency-based press effect to buttons.
 /// //////////////////////////////////////////////////
 class _ButtonPressEffect extends StatefulWidget {
-  const _ButtonPressEffect(this.child, {super.key});
+  const _ButtonPressEffect(this.child);
   final Widget child;
 
   @override
@@ -209,7 +209,7 @@ class _ButtonPressEffectState extends State<_ButtonPressEffect> {
 }
 
 class _CustomFocusBuilder extends StatefulWidget {
-  const _CustomFocusBuilder({super.key, required this.builder, this.focusNode, this.onFocusChanged});
+  const _CustomFocusBuilder({required this.builder, this.focusNode, this.onFocusChanged});
   final Widget Function(BuildContext context, FocusNode focus) builder;
   final void Function(bool hasFocus)? onFocusChanged;
   final FocusNode? focusNode;
