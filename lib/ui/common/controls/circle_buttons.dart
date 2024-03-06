@@ -121,20 +121,23 @@ class BackBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FullscreenKeyboardListener(
-    onKeyDown: (event) => _handleKeyDown(context, event), child: CircleIconBtn(
-      icon: icon,
-      bgColor: bgColor,
-      color: iconColor,
-      onPressed: onPressed ?? () {
-        final nav = Navigator.of(context);
-        if(nav.canPop()){
-          Navigator.pop(context);
-        } else {
-          context.go(ScreenPaths.home);
-        }
-      },
-      semanticLabel: semanticLabel ?? $strings.circleButtonsSemanticBack,
-    ),);
+      onKeyDown: (event) => _handleKeyDown(context, event),
+      child: CircleIconBtn(
+        icon: icon,
+        bgColor: bgColor,
+        color: iconColor,
+        onPressed: onPressed ??
+            () {
+              final nav = Navigator.of(context);
+              if (nav.canPop()) {
+                Navigator.pop(context);
+              } else {
+                context.go(ScreenPaths.home);
+              }
+            },
+        semanticLabel: semanticLabel ?? $strings.circleButtonsSemanticBack,
+      ),
+    );
   }
 
   Widget safe() => _SafeAreaWithPadding(child: this);

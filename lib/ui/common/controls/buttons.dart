@@ -24,7 +24,7 @@ class AppBtn extends StatelessWidget {
     this.border,
     this.focusNode,
     this.onFocusChanged,
-  })  : _builder = null;
+  }) : _builder = null;
 
   AppBtn.from({
     super.key,

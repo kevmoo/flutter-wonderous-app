@@ -68,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       })
       ..registerAction(AutomationAction.homeScreenReset, () {
         _setPageIndex(0);
-      })..registerAction(AutomationAction.homeScreenShowDetailsPage, () { 
+      })
+      ..registerAction(AutomationAction.homeScreenShowDetailsPage, () {
         _showDetailsPage();
       });
   }

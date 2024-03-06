@@ -45,24 +45,11 @@ class GradientContainer extends StatelessWidget {
 
 class HzGradient extends GradientContainer {
   const HzGradient(super.colors, super.stops,
-      {super.key,
-      super.child,
-      super.width,
-      super.height,
-      super.alignment,
-      super.blendMode,
-      super.borderRadius});
+      {super.key, super.child, super.width, super.height, super.alignment, super.blendMode, super.borderRadius});
 }
 
 class VtGradient extends GradientContainer {
   const VtGradient(super.colors, super.stops,
-      {super.key,
-      super.child,
-      super.width,
-      super.height,
-      super.alignment,
-      super.blendMode,
-      super.borderRadius})
-      : super(begin: Alignment.topCenter,
-            end: Alignment.bottomCenter);
+      {super.key, super.child, super.width, super.height, super.alignment, super.blendMode, super.borderRadius})
+      : super(begin: Alignment.topCenter, end: Alignment.bottomCenter);
 }
