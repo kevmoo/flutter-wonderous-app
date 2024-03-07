@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/widgets.dart';
 import 'package:wonders/router.dart';
 
 /// A helper class for automating actions in the Wonderous app.
@@ -7,6 +9,10 @@ import 'package:wonders/router.dart';
 /// profiles in Chrome DevTools.
 class Automator {
   Automator._();
+
+  late final _bindings = WidgetsFlutterBinding.ensureInitialized();
+
+  final _totalSpans = <FrameTiming>[];
 
   static final instance = Automator._();
 
@@ -19,6 +25,9 @@ class Automator {
       return;
     }
     _automating.value = true;
+
+    _totalSpans.clear();
+    _bindings.addTimingsCallback(_timingsCallback);
 
     appRouter.go(ScreenPaths.home);
 
@@ -48,6 +57,23 @@ class Automator {
   void stopAutomation() {
     if (_automating.value) {
       _automating.value = false;
+
+      _bindings.removeTimingsCallback(_timingsCallback);
+
+      if (_totalSpans.isNotEmpty) {
+        _totalSpans.sort();
+
+        for (var item in const [50, 90, 95, 99]) {
+          final index = _totalSpans.length * item ~/ 100.0;
+          print(
+            [
+              item,
+              (_totalSpans[index].totalSpan.inMicroseconds / 1000.0)
+                  .toStringAsFixed(2)
+            ].map((e) => e.toString().padLeft(6)).join('  '),
+          );
+        }
+      }
     }
   }
 
@@ -59,6 +85,14 @@ class Automator {
   void _callAction(AutomationAction action) {
     final callback = _actions[action];
     callback?.call();
+  }
+
+  void _timingsCallback(List<FrameTiming> timings) {
+    assert(
+      _automating.value,
+      'Automation should be running when these events are fired',
+    );
+    _totalSpans.addAll(timings);
   }
 }
 
