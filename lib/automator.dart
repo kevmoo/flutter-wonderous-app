@@ -61,16 +61,17 @@ class Automator {
       _bindings.removeTimingsCallback(_timingsCallback);
 
       if (_totalSpans.isNotEmpty) {
-        _totalSpans.sort();
+        final items = _totalSpans
+            .map((e) => e.totalSpan.inMicroseconds)
+            .toList(growable: false)
+          ..sort();
 
         for (var item in const [50, 90, 95, 99]) {
-          final index = _totalSpans.length * item ~/ 100.0;
+          final index = items.length * item ~/ 100.0;
           print(
-            [
-              item,
-              (_totalSpans[index].totalSpan.inMicroseconds / 1000.0)
-                  .toStringAsFixed(2)
-            ].map((e) => e.toString().padLeft(6)).join('  '),
+            [item, (items[index] / 1000.0).toStringAsFixed(2)]
+                .map((e) => e.toString().padLeft(6))
+                .join('  '),
           );
         }
       }
