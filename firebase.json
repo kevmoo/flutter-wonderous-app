@@ -1,5 +1,7 @@
 {
   "hosting": {
+    "site": "wonderous-kevmoo",
+    "predeploy": "flutter build web --wasm",
     "public": "build/web/",
     "ignore": [
       "firebase.json",
