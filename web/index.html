@@ -32,15 +32,11 @@
   <title>flutter_wonderous_app</title>
   <link rel="manifest" href="manifest.json">
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
   <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" ></script>
 </head>
 <body>
 <script>
+  {{flutter_js}}
   {{flutter_build_config}}
   const searchParams = new URLSearchParams(window.location.search);
   const forceCanvaskit = searchParams.get('force_canvaskit') === 'true';
