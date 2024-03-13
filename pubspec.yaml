@@ -4,7 +4,8 @@ publish_to: "none"
 version: 2.2.2+9
 
 environment:
-  sdk: ^3.3.0
+  # restricting to versions that have the new init logic
+  sdk: ^3.4.0-227.0.dev
 
 dependencies:
   flutter:
