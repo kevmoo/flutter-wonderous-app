@@ -47,3 +47,5 @@ app.*.map.json
 
 macos/Flutter/ephemeral
 .firebase
+
+/macos/Flutter/ephemeral
