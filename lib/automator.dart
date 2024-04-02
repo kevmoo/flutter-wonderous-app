@@ -24,34 +24,37 @@ class Automator {
       // short-circuit
       return;
     }
-    _automating.value = true;
+    try {
+      _automating.value = true;
 
-    _totalSpans.clear();
-    _bindings.addTimingsCallback(_timingsCallback);
+      _totalSpans.clear();
+      _bindings.addTimingsCallback(_timingsCallback);
 
-    appRouter.go(ScreenPaths.home);
+      appRouter.go(ScreenPaths.home);
 
-    for (var action in [
-      AutomationAction.homeScreenReset,
-      AutomationAction.homeScreenNext,
-      AutomationAction.homeScreenNext,
-      AutomationAction.homeScreenNext,
-      AutomationAction.homeScreenNext,
-      AutomationAction.homeScreenShowDetailsPage,
-      AutomationAction.editorialScrollToBottom,
-      AutomationAction.switchDetailsTabToPhotos,
-      AutomationAction.switchDetailsTabToArtifacts,
-      AutomationAction.switchDetailsTabToTimeline,
-    ]) {
-      await Future.delayed(action.delay, () => _callAction(action));
-      if (!_automating.value) {
-        return;
+      for (var action in [
+        AutomationAction.homeScreenReset,
+        AutomationAction.homeScreenNext,
+        AutomationAction.homeScreenNext,
+        AutomationAction.homeScreenNext,
+        AutomationAction.homeScreenNext,
+        AutomationAction.homeScreenShowDetailsPage,
+        AutomationAction.editorialScrollToBottom,
+        AutomationAction.switchDetailsTabToPhotos,
+        AutomationAction.switchDetailsTabToArtifacts,
+        AutomationAction.switchDetailsTabToTimeline,
+      ]) {
+        await Future.delayed(action.delay, () => _callAction(action));
+        if (!_automating.value) {
+          // cancel out early if automation has stopped!
+          return;
+        }
       }
+
+      await Future.delayed(_shortDelay);
+    } finally {
+      stopAutomation();
     }
-
-    await Future.delayed(_shortDelay);
-
-    stopAutomation();
   }
 
   void stopAutomation() {
