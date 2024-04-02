@@ -61,13 +61,29 @@ class Automator {
       _bindings.removeTimingsCallback(_timingsCallback);
 
       if (_totalSpans.isNotEmpty) {
-        final items = _totalSpans.map((e) => e.totalSpan.inMicroseconds).toList(growable: false)..sort();
+        final things = <String, Duration Function(FrameTiming)>{
+          'totalSpan': (ft) => ft.totalSpan,
+          'buildDuration': (ft) => ft.buildDuration,
+        };
 
-        for (var item in const [50, 90, 95, 99]) {
-          final index = items.length * item ~/ 100.0;
-          print(
-            [item, (items[index] / 1000.0).toStringAsFixed(2)].map((e) => e.toString().padLeft(6)).join('  '),
-          );
+        for (var thing in things.entries) {
+          final timing = _totalSpans
+              .map((e) => thing.value(e).inMicroseconds)
+              .toList(growable: false)
+            ..sort();
+
+          print('*****');
+          print(thing.key);
+          for (var item in const [50, 90, 95, 99]) {
+            final index = timing.length * item ~/ 100.0;
+            print(
+              [item, (timing[index] / 1000.0).toStringAsFixed(2)]
+                  .map((e) => e.toString().padLeft(6))
+                  .join('  '),
+            );
+          }
+          print('');
+          print('*****');
         }
       }
     }
