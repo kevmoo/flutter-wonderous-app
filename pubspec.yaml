@@ -38,7 +38,7 @@ dependencies:
   image_fade: ^0.6.2
   intl: ^0.19.0
   internet_connection_checker: ^1.0.0+1
-  package_info_plus: ^6.0.0
+  package_info_plus: ^7.0.0
   particle_field: ^1.0.0
   path_provider: ^2.1.1
   pointer_interceptor: ^0.10.1
@@ -125,3 +125,11 @@ flutter:
     - family: B612Mono
       fonts:
         - asset: assets/fonts/B612Mono-Regular.ttf
+
+dependency_overrides:
+  youtube_player_iframe_web:
+    # https://github.com/sarbagyastha/youtube_player_flutter/pull/932
+    git:
+      url: https://github.com/kevmoo/youtube_player_flutter
+      ref: credentialless_iframe
+      path: packages/youtube_player_iframe_web
