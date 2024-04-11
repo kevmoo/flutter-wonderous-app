@@ -125,11 +125,3 @@ flutter:
     - family: B612Mono
       fonts:
         - asset: assets/fonts/B612Mono-Regular.ttf
-
-dependency_overrides:
-  youtube_player_iframe_web:
-    # https://github.com/sarbagyastha/youtube_player_flutter/pull/932
-    git:
-      url: https://github.com/kevmoo/youtube_player_flutter
-      ref: credentialless_iframe
-      path: packages/youtube_player_iframe_web

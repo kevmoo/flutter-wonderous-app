@@ -261,10 +261,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: f6ba8eed5fa831e461122de577d4a26674a1d836e2956abe6c0f6c4d952e6673
+      sha256: "771c8feb40ad0ef639973d7ecf1b43d55ffcedb2207fd43fab030f5639e40446"
       url: "https://pub.dev"
     source: hosted
-    version: "13.2.3"
+    version: "13.2.4"
   home_widget:
     dependency: "direct main"
     description:
@@ -890,18 +890,17 @@ packages:
     dependency: "direct main"
     description:
       name: youtube_player_iframe
-      sha256: "394ae6203eb04b8f466e0a4e42b2e07975725ae5042e64f43190e4ece8d09ac7"
+      sha256: "15ec03bab4b2c2071e427091605456245b58d0d51f0942e7437675b2ff25bc09"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.1"
+    version: "5.1.2"
   youtube_player_iframe_web:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/youtube_player_iframe_web"
-      ref: credentialless_iframe
-      resolved-ref: "782887356ddaabaae86cf5fe618f8798f2efeed6"
-      url: "https://github.com/kevmoo/youtube_player_flutter"
-    source: git
+      name: youtube_player_iframe_web
+      sha256: "743e8ce2ee77b8ea6e36ae986f0ef111b38c3119ae55ae813223ecddeb56b770"
+      url: "https://pub.dev"
+    source: hosted
     version: "3.0.2"
 sdks:
   dart: ">=3.4.0-227.0.dev <4.0.0"
