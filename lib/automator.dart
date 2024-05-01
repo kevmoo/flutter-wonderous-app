@@ -13,6 +13,7 @@ class Automator {
   late final _bindings = WidgetsFlutterBinding.ensureInitialized();
 
   final _totalSpans = <FrameTiming>[];
+  final _stopWatch = Stopwatch();
 
   static final instance = Automator._();
 
@@ -26,6 +27,9 @@ class Automator {
     }
     try {
       _automating.value = true;
+      _stopWatch
+        ..reset()
+        ..start();
 
       _totalSpans.clear();
       _bindings.addTimingsCallback(_timingsCallback);
@@ -60,13 +64,17 @@ class Automator {
   void stopAutomation() {
     if (_automating.value) {
       _automating.value = false;
+      _stopWatch.stop();
 
       _bindings.removeTimingsCallback(_timingsCallback);
 
       if (_totalSpans.isNotEmpty) {
+        print("####");
+        print('Frame count: ${_totalSpans.length}');
+        print('Wall time: ${_stopWatch.elapsed}');
+
         final things = <String, Duration Function(FrameTiming)>{
           'totalSpan': (ft) => ft.totalSpan,
-          'buildDuration': (ft) => ft.buildDuration,
         };
 
         for (var thing in things.entries) {
